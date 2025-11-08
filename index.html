@@ -130,6 +130,77 @@
       .who .cols{grid-template-columns: 1fr;}
       .contact .row{grid-template-columns: 1fr;}
       .topnav nav{display:none;}
+/* ===== Mobile responsive tweaks ===== */
+
+/* ≤ 768px : tablette & mobile large */
+@media (max-width: 768px){
+
+  /* Sidebar devient un bandeau compact */
+  .sidebar{
+    position: sticky; top:0; width:100%;
+    padding:.75rem 1rem; gap:.75rem;
+    flex-direction:row; justify-content:flex-start; text-align:left;
+    border-right:none; border-bottom:1px solid rgba(0,0,0,.06);
+  }
+  .sidebar img.portrait{width:48px; height:48px; margin:0 .6rem 0 0;}
+  .sidebar h2{font-size:1.05rem; margin:.1rem 0;}
+  .sidebar h3,.sidebar ul,.coords{display:none;}      /* on épure */
+  .btn{padding:.6rem .9rem; font-size:.9rem;}
+
+  /* Le contenu reprend toute la largeur */
+  main{margin-left:0; width:100%;}
+  .container{padding:1.25rem;}
+  section{margin:2rem 0 3rem;}
+
+  /* Top nav : on garde le logo, on masque la nav */
+  .topnav{backdrop-filter:unset; background:#fff;}
+  .topnav .wrap{padding:.6rem .9rem;}
+  .topnav img.logo{height:30px;}
+  .topnav nav{display:none;}
+
+  /* Hero plus condensé et lisible */
+  .hero{min-height:300px;}
+  .hero .inner{padding:2rem 1.25rem; max-width:none;}
+  .hero h1{font-size:1.6rem;}
+  .hero p{font-size:.98rem; margin-bottom:.9rem;}
+
+  /* Grilles -> 1 colonne */
+  .qsj{grid-template-columns:1fr; gap:1rem;}
+  .who .cols{grid-template-columns:1fr;}
+  .approches-grid{grid-template-columns:1fr;}
+  .kids{grid-template-columns:1fr; gap:1rem;}
+
+  /* Images contenues */
+  .qsj .photo img,
+  .tile .img img,
+  .kids .img img{
+    width:100%; height:auto; border-radius:12px; display:block; object-fit:cover;
+  }
+
+  /* Cartes : aération */
+  .card{padding:1rem;}
+
+  /* Avis : colonnes fluides */
+  .avis{grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:.8rem;}
+
+  /* Contact : une colonne + Calendly hauteur réduite */
+  .contact .row{grid-template-columns:1fr; gap:1rem;}
+  .cal{padding:.75rem;}
+  .cal .calendly-inline-widget{height:560px !important;}
+}
+
+/* ≤ 480px : mobile serré */
+@media (max-width: 480px){
+  .container{padding:1rem;}
+  .hero{min-height:240px;}
+  .hero .inner{padding:1.4rem 1rem;}
+  .hero h1{font-size:1.35rem;}
+  .hero p{font-size:.95rem;}
+  .quote{margin-top:.6rem; padding-left:.75rem; border-left-width:3px;}
+  .cal .calendly-inline-widget{height:520px !important;}
+  .btn{padding:.55rem .85rem; font-size:.9rem;}
+}
+
     }
   </style>
 </head>
