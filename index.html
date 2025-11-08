@@ -258,6 +258,12 @@
     display: none !important;
   }
 }
+/* Mobile (≤ 768px) : on remplace la sidebar par le header compact + CTA bas */
+@media (max-width: 768px){
+  .sidebar{ display:none !important; }
+  .mobile-profile{ display:flex; }
+  .mobile-cta{ display:flex; }
+}
 
     }
   </style>
