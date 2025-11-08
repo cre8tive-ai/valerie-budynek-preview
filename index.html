@@ -200,6 +200,56 @@
   .cal .calendly-inline-widget{height:520px !important;}
   .btn{padding:.55rem .85rem; font-size:.9rem;}
 }
+/* ===== UX mobile : remplacer la sidebar par un header compact + CTA bas ===== */
+@media (max-width: 768px){
+  /* On masque la sidebar desktop */
+  .sidebar{ display:none !important; }
+
+  /* Header mobile compact sticky */
+  .mobile-profile{
+    position: sticky; top: 0; z-index: 40;
+    display:flex; align-items:center; gap:.75rem;
+    padding:.75rem 1rem; background:#fff;
+    border-bottom:1px solid rgba(0,0,0,.06);
+  }
+  .mobile-profile .portrait{ width:44px; height:44px; border-radius:50%; object-fit:cover; }
+  .mobile-profile .txt strong{ display:block; font-size:1rem; line-height:1.1; }
+  .mobile-profile .txt span{ display:block; font-size:.85rem; color:var(--muted); }
+  .mobile-profile .btn.small{ padding:.45rem .7rem; font-size:.85rem; border-radius:999px; margin-top:.25rem; }
+  .mobile-profile .more{
+    margin-left:auto; background:transparent; cursor:pointer;
+    border:1px solid rgba(0,0,0,.15); border-radius:999px; padding:.35rem .6rem;
+    font-size:.9rem;
+  }
+
+  /* Tiroir d’infos (adresse / téléphone) */
+  .mobile-profile-drawer{
+    background:#fff; padding:.6rem 1rem 0.8rem;
+    border-bottom:1px solid rgba(0,0,0,.06);
+  }
+  .mobile-profile-drawer[hidden]{ display:none; }
+
+  /* Barre d’actions en bas */
+  .mobile-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:45;
+    display:flex; gap:1px;
+    background:linear-gradient(90deg, var(--accent), #8f705c);
+    box-shadow:0 -6px 20px rgba(0,0,0,.08);
+  }
+  .mobile-cta a{
+    flex:1; text-align:center; color:#fff; font-weight:700;
+    padding:.85rem 0; text-decoration:none;
+  }
+
+  /* On évite que la barre masque le contenu */
+  body{ padding-bottom:56px; }
+}
+
+/* Option: un peu plus serré sur très petit écran */
+@media (max-width: 480px){
+  .mobile-profile .portrait{ width:40px; height:40px; }
+  .mobile-cta a{ padding:.75rem 0; font-weight:600; }
+}
 
     }
   </style>
@@ -234,6 +284,28 @@
           <a href="#contact">Contact</a>
         </nav>
       </div>
+<!-- Header mobile compact (affiché uniquement sur mobile) -->
+<div class="mobile-profile" role="region" aria-label="Infos rapides">
+  <img src="assets/portrait-valerie.jpg" alt="Valérie Budynek" class="portrait">
+  <div class="txt">
+    <strong>Valérie Budynek</strong>
+    <span>Psychopraticienne — Thérapie systémique</span>
+    <a href="#contact" class="btn small">Prendre rendez-vous</a>
+  </div>
+  <button class="more" aria-expanded="false" aria-controls="mp-drawer">Infos</button>
+</div>
+<div id="mp-drawer" class="mobile-profile-drawer" hidden>
+  <p>📍 7 rue de la Pradine, 31150 Fenouillet</p>
+  <p>📞 <a href="tel:+33658165007">06 58 16 50 07</a></p>
+</div>
+
+<!-- Barre d’actions sticky bas d’écran -->
+<div class="mobile-cta" role="navigation" aria-label="Actions rapides">
+  <a href="tel:+33658165007">Appeler</a>
+  <a href="https://wa.me/33658165007" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="#contact">RDV</a>
+</div>
+
     </div>
 
     <div class="container">
@@ -353,5 +425,19 @@
       <footer>© 2025 Valérie Budynek — Psychopraticienne à Fenouillet (Toulouse Nord)</footer>
     </div>
   </main>
+<script>
+  (function(){
+    const btn = document.querySelector('.mobile-profile .more');
+    const drawer = document.getElementById('mp-drawer');
+    if(btn && drawer){
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        drawer.hidden = expanded;
+      });
+    }
+  })();
+</script>
+
 </body>
 </html>
