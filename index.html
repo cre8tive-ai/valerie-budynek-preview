@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Valérie Budynek - Thérapeute à Fenouillet</title>
+  <style>
+    :root{
+      --bg-soft:#F9F7F4;
+      --text:#333333;
+      --accent:#B58E73;
+      --accent-dark:#9f7a61;
+      --title:#7A5C4F;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      display: flex;
+      background-color: #fff;
+    }
+    /* Bandeau gauche sticky */
+    .sidebar {
+      width: 28%;
+      background-color: var(--bg-soft);
+      position: fixed;
+      inset-block: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-right: 1px solid rgba(0,0,0,.06);
+    }
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .sidebar h2 {
+      margin: 0.5rem 0;
+      color: var(--title);
+      font-size: 1.4rem;
+    }
+    .sidebar h3 {
+      margin: 0.2rem 0 1rem;
+      font-weight: 500;
+      font-size: 0.98rem;
+      color:#533f35;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem 0;
+    }
+    .sidebar li {
+      font-size: 0.95rem;
+      margin: 0.35rem 0;
+    }
+    .sidebar .coords{font-size:.95rem; line-height:1.5; opacity:.9}
+    .cta {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: transform .08s ease, background-color .2s ease;
+    }
+    .cta:hover{ background-color: var(--accent-dark); transform: translateY(-1px); }
+    .cta:active{ transform: translateY(0); }
+    /* Contenu principal */
+    main {
+      margin-left: 28%;
+      width: 72%;
+      padding: 3rem 4rem;
+    }
+    section { margin-bottom: 5rem; }
+    .hero {
+      position: relative;
+      background: url('assets/hero-placeholder.jpg') center/cover no-repeat;
+      padding: 8rem 2rem;
+      border-radius: var(--radius);
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.35));
+      pointer-events:none;
+    }
+    .hero > *{ position:relative; z-index:1; }
+    h1{ font-size: clamp(1.6rem, 3vw, 2.4rem); margin:0 0 .5rem 0;}
+    .hero p{ font-size: clamp(1rem, 2vw, 1.2rem); margin:0 0 1.25rem 0;}
+    .grid { display:grid; gap:1.25rem; }
+    .approches, .avis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--bg-soft);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      border:1px solid rgba(0,0,0,.06);
+    }
+    .a-propos .grid{ grid-template-columns: 1fr 1.2fr; align-items:center; }
+    .a-propos .illustr{
+      background: var(--bg-soft);
+      border-radius: var(--radius);
+      min-height: 240px;
+      background-image:url('assets/portrait-valerie.jpg');
+      background-size: cover;
+      background-position: center;
+      border:1px solid rgba(0,0,0,.06);
+    }
+    h2{font-size: clamp(1.25rem, 2.2vw, 1.6rem); color:#1e1e1e; margin:0 0 .75rem 0;}
+    .muted{ color:#555; }
+    .section-soft{ background: var(--bg-soft); padding:2rem; border-radius: var(--radius); border:1px solid rgba(0,0,0,.06); }
+    footer {
+      background: var(--bg-soft);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.95rem;
+      border-radius: var(--radius);
+    }
+    /* Responsive: sidebar collapses to header */
+    @media (max-width: 980px) {
+      .sidebar {
+        position: sticky;
+        top: 0;
+        height: auto;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: flex-start;
+        border-right:none;
+        border-bottom:1px solid rgba(0,0,0,.06);
+      }
+      .sidebar img { width: 56px; height: 56px; margin: 0; }
+      .sidebar h2{ font-size:1rem; margin:.1rem 0 0 0;}
+      .sidebar h3{ display:none; }
+      .sidebar ul{ display:none; }
+      .sidebar .coords{ display:none; }
+      .sidebar .cta{ margin-left:auto; padding:.65rem 1rem; }
+      main { margin-left: 0; width: 100%; padding: 1.25rem; }
+      .hero { padding: 4rem 1.25rem; border-radius: 12px; }
+      section { margin-bottom: 3rem; }
+      .a-propos .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <img src="assets/portrait-valerie.jpg" alt="Portrait de Valérie Budynek">
+    <div class="stack">
+      <h2>Valérie Budynek</h2>
+      <h3>Psychopraticienne – Thérapie systémique</h3>
+      <ul>
+        <li>Hypnose / IFS</li>
+        <li>EMDR – DSA</li>
+        <li>Thérapie systémique</li>
+      </ul>
+      <p class="coords">📍 7 rue de la Pradine, 31150 Fenouillet<br>📞 06 58 16 50 07</p>
+    </div>
+    <button class="cta">Prendre rendez-vous</button>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <h1>Thérapeute à Fenouillet (Toulouse nord)</h1>
+      <p>Accompagnement bienveillant pour enfants, adolescents et adultes</p>
+      <button class="cta">Découvrir mes approches</button>
+    </section>
+
+    <section class="a-propos">
+      <h2>À propos</h2>
+      <div class="grid">
+        <div class="illustr" aria-hidden="true"></div>
+        <div>
+          <p class="muted">[Texte court de présentation et parcours : 25 ans auprès des familles, transition vers la thérapie, approche bienveillante et intégrative.]</p>
+          <button class="cta">En savoir plus</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Mes approches thérapeutiques</h2>
+      <div class="approches">
+        <div class="card">Hypnose</div>
+        <div class="card">EMDR / DSA</div>
+        <div class="card">Thérapie systémique</div>
+        <div class="card">IFS / Génogramme</div>
+      </div>
+    </section>
+
+    <section class="section-soft">
+      <h2>Enfants & Adolescents</h2>
+      <p class="muted">[Bloc dédié aux accompagnements jeunes publics : traumatismes, émotions, confiance, post-Covid.]</p>
+    </section>
+
+    <section>
+      <h2>Avis et témoignages</h2>
+      <div class="avis">
+        <div class="card">“Très à l’écoute et bienveillante...” — C. M.</div>
+        <div class="card">“Une vraie transformation personnelle...” — L. D.</div>
+        <div class="card">“Je recommande vivement !” — A. B.</div>
+      </div>
+    </section>
+
+    <section class="section-soft">
+      <h2>Prendre rendez-vous</h2>
+      <p class="muted">Chaque histoire mérite d’être écoutée.</p>
+      <button class="cta">Réserver une consultation</button>
+    </section>
+
+    <footer>
+      © 2025 Valérie Budynek – Thérapeute à Fenouillet | <a href="#" rel="nofollow">Mentions légales</a>
+    </footer>
+  </main>
+</body>
+</html>

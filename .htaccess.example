@@ -1,0 +1,10 @@
+# Exemple de protection basique par mot de passe (à adapter)
+AuthType Basic
+AuthName "Aperçu privé"
+AuthUserFile /chemin/absolu/vers/.htpasswd
+Require valid-user
+
+# Empêcher l’indexation (en tête HTTP)
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
