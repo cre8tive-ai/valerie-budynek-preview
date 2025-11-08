@@ -83,6 +83,28 @@
 
     /* Kids section */
     .kids{display:grid; grid-template-columns: 1.1fr 1fr; gap:2rem; background:var(--bg-soft); border-radius:var(--radius); border:1px solid rgba(0,0,0,.06); padding:2rem;}
+.kids .img img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* Responsive image et disposition mobile */
+@media (max-width: 768px) {
+  .kids {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .kids .img img {
+    max-width: 100%;
+  }
+}
+
 
     /* Avis */
     .avis{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;}
