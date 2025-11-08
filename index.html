@@ -264,6 +264,24 @@
   .mobile-profile{ display:flex; }
   .mobile-cta{ display:flex; }
 }
+/* Desktop (≥ 981px) : masquer les éléments mobiles */
+@media (min-width: 981px){
+  .mobile-profile,
+  .mobile-profile-drawer,
+  .mobile-cta{
+    display: none !important;
+  }
+}
+
+/* Mobile (≤ 768px) : activer header compact + barre d’actions, cacher la sidebar */
+@media (max-width: 768px){
+  .sidebar{ display:none !important; }
+  .mobile-profile{ display:flex; }
+  .mobile-cta{ display:flex; }
+}
+
+/* Bonus: si la topnav recouvre un peu le contenu, ajoute un léger offset */
+.topnav + .container { padding-top: 0.25rem; }
 
     }
   </style>
