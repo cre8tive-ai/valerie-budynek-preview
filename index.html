@@ -307,9 +307,182 @@
   .mobile-profile-drawer{ display:block; } /* s’ouvre/ferme via JS (hidden) */
   .mobile-cta{ display:flex !important; }
 }
+/* ---------- HAMBURGER (base caché) ---------- */
+.hamburger{ display:none; }
+
+/* ---------- MOBILE ONLY ---------- */
+@media (max-width: 768px){
+  /* On masque la nav desktop (déjà fait chez toi, on re-sécurise) */
+  .topnav nav{ display:none !important; }
+
+  /* Bouton hamburger */
+  .hamburger{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; margin-left:auto;
+    background:#fff; border:1px solid rgba(0,0,0,.12); border-radius:10px;
+    cursor:pointer;
+  }
+  .hamburger span{
+    display:block; width:20px; height:2px; background:#333; margin:3px 0; transition:transform .2s ease, opacity .2s ease;
+  }
+  /* État ouvert (animation en X) */
+  .hamburger[aria-expanded="true"] span:nth-child(1){ transform:translateY(5px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-5px) rotate(-45deg); }
+
+  /* Drawer mobile */
+  .mobile-drawer{
+    position:fixed; top:56px; right:0; left:0;
+    background:#fff;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transform:translateY(-12px);
+    opacity:0; pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+    z-index:38; /* sous la topnav (z 30) mais au-dessus du contenu */
+    padding:.5rem .75rem .75rem;
+  }
+  .mobile-drawer a{
+    display:block; padding:.9rem 0; border-bottom:1px solid rgba(0,0,0,.06);
+    color:#333; font-weight:600;
+  }
+  .mobile-drawer a:last-child{ border-bottom:none; }
+
+  /* État visible (via [data-open]) */
+  .mobile-drawer[data-open="true"]{
+    opacity:1; transform:translateY(0); pointer-events:auto;
+  }
+
+  /* Évite que le bascule recouvre trop la page si tu as la barre CTA */
+  body.menu-open{ padding-bottom:56px; }
+}
+/* ---------- HAMBURGER (base caché) ---------- */
+.hamburger{ display:none; }
+
+/* ---------- MOBILE ONLY ---------- */
+@media (max-width: 768px){
+  /* On masque la nav desktop (déjà fait chez toi, on re-sécurise) */
+  .topnav nav{ display:none !important; }
+
+  /* Bouton hamburger */
+  .hamburger{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; margin-left:auto;
+    background:#fff; border:1px solid rgba(0,0,0,.12); border-radius:10px;
+    cursor:pointer;
+  }
+  .hamburger span{
+    display:block; width:20px; height:2px; background:#333; margin:3px 0; transition:transform .2s ease, opacity .2s ease;
+  }
+  /* État ouvert (animation en X) */
+  .hamburger[aria-expanded="true"] span:nth-child(1){ transform:translateY(5px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-5px) rotate(-45deg); }
+
+  /* Drawer mobile */
+  .mobile-drawer{
+    position:fixed; top:56px; right:0; left:0;
+    background:#fff;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transform:translateY(-12px);
+    opacity:0; pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+    z-index:38; /* sous la topnav (z 30) mais au-dessus du contenu */
+    padding:.5rem .75rem .75rem;
+  }
+  .mobile-drawer a{
+    display:block; padding:.9rem 0; border-bottom:1px solid rgba(0,0,0,.06);
+    color:#333; font-weight:600;
+  }
+  .mobile-drawer a:last-child{ border-bottom:none; }
+
+  /* État visible (via [data-open]) */
+  .mobile-drawer[data-open="true"]{
+    opacity:1; transform:translateY(0); pointer-events:auto;
+  }
+
+  /* Évite que le bascule recouvre trop la page si tu as la barre CTA */
+  body.menu-open{ padding-bottom:56px; }
+}
 
   </style>
 </head>
+<script>
+  (function(){
+    const btn = document.querySelector('.hamburger');
+    const menu = document.getElementById('mobile-menu');
+    if(!btn || !menu) return;
+
+    function toggleMenu(){
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      // Utilise hidden + data attribute (meilleure a11y + transitions)
+      if(open){
+        menu.setAttribute('hidden', '');
+        menu.removeAttribute('data-open');
+        document.body.classList.remove('menu-open');
+      }else{
+        menu.removeAttribute('hidden');
+        // petit timeout pour permettre la transition après remove hidden
+        requestAnimationFrame(() => menu.setAttribute('data-open','true'));
+        document.body.classList.add('menu-open');
+      }
+    }
+
+    btn.addEventListener('click', toggleMenu);
+
+    // Fermer si on clique un lien
+    menu.addEventListener('click', (e)=>{
+      if(e.target.tagName === 'A'){ toggleMenu(); }
+    });
+
+    // Fermer si on redimensionne au-dessus du breakpoint
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 768 && btn.getAttribute('aria-expanded') === 'true'){
+        toggleMenu();
+      }
+    });
+  })();
+</script>
+<script>
+  (function(){
+    const btn = document.querySelector('.hamburger');
+    const menu = document.getElementById('mobile-menu');
+    if(!btn || !menu) return;
+
+    function toggleMenu(){
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      // Utilise hidden + data attribute (meilleure a11y + transitions)
+      if(open){
+        menu.setAttribute('hidden', '');
+        menu.removeAttribute('data-open');
+        document.body.classList.remove('menu-open');
+      }else{
+        menu.removeAttribute('hidden');
+        // petit timeout pour permettre la transition après remove hidden
+        requestAnimationFrame(() => menu.setAttribute('data-open','true'));
+        document.body.classList.add('menu-open');
+      }
+    }
+
+    btn.addEventListener('click', toggleMenu);
+
+    // Fermer si on clique un lien
+    menu.addEventListener('click', (e)=>{
+      if(e.target.tagName === 'A'){ toggleMenu(); }
+    });
+
+    // Fermer si on redimensionne au-dessus du breakpoint
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 768 && btn.getAttribute('aria-expanded') === 'true'){
+        toggleMenu();
+      }
+    });
+  })();
+</script>
+
 <body>
   <!-- Sidebar sticky -->
   <aside class="sidebar">
@@ -332,6 +505,11 @@
     <div class="topnav">
       <div class="wrap">
         <img src="assets/logo-vb.png" alt="Logo VB" class="logo">
+<!-- Bouton hamburger (mobile only) -->
+<button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+  <span></span><span></span><span></span>
+</button>
+
         <nav>
           <a href="#">Accueil</a>
           <a href="#approches">Mes approches thérapeutiques</a>
@@ -340,6 +518,15 @@
           <a href="#contact">Contact</a>
         </nav>
       </div>
+<!-- Menu mobile coulissant -->
+<nav id="mobile-menu" class="mobile-drawer" hidden>
+  <a href="#">Accueil</a>
+  <a href="#approches">Mes approches thérapeutiques</a>
+  <a href="#quisuisje">Qui suis-je</a>
+  <a href="#pourqui">Pour qui & pour quoi</a>
+  <a href="#contact">Contact</a>
+</nav>
+
 <!-- Header mobile compact (affiché uniquement sur mobile) -->
 <div class="mobile-profile" role="region" aria-label="Infos rapides">
   <img src="assets/portrait-valerie.jpg" alt="Valérie Budynek" class="portrait">
