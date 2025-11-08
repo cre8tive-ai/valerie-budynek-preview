@@ -284,6 +284,30 @@
 .topnav + .container { padding-top: 0.25rem; }
 
     }
+/* --- Mobile header & CTA: base state (masqués par défaut) --- */
+.mobile-profile,
+.mobile-profile-drawer,
+.mobile-cta{
+  display: none;            /* cachés par défaut */
+}
+
+/* --- Desktop (≥ 981px) : forcer caché (au cas où) --- */
+@media (min-width: 981px){
+  .mobile-profile,
+  .mobile-profile-drawer,
+  .mobile-cta{
+    display: none !important;
+  }
+}
+
+/* --- Mobile (≤ 768px) : activer mobile header & CTA, cacher sidebar --- */
+@media (max-width: 768px){
+  .sidebar{ display:none !important; }
+  .mobile-profile{ display:flex !important; }
+  .mobile-profile-drawer{ display:block; } /* s’ouvre/ferme via JS (hidden) */
+  .mobile-cta{ display:flex !important; }
+}
+
   </style>
 </head>
 <body>
