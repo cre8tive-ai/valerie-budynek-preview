@@ -4,169 +4,113 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Valérie Budynek - Thérapeute à Fenouillet</title>
+  <title>Valérie Budynek — Psychopraticienne à Fenouillet (Toulouse Nord)</title>
   <style>
     :root{
       --bg-soft:#F9F7F4;
-      --text:#333333;
+      --bg:#FFFFFF;
+      --ink:#333333;
+      --muted:#555;
       --accent:#B58E73;
-      --accent-dark:#9f7a61;
+      --accent-2:#caa98f;
       --title:#7A5C4F;
       --radius:16px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body {
-      margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      display: flex;
-      background-color: #fff;
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      display:flex;
+      background:var(--bg);
     }
-    /* Bandeau gauche sticky */
-    .sidebar {
-      width: 28%;
-      background-color: var(--bg-soft);
-      position: fixed;
-      inset-block: 0;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border-right: 1px solid rgba(0,0,0,.06);
+    a{color:inherit; text-decoration:none;}
+    /* Sidebar sticky */
+    .sidebar{
+      width:28%;
+      background:var(--bg-soft);
+      position:fixed; inset-block:0;
+      padding:2rem 1.5rem;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      border-right:1px solid rgba(0,0,0,.06);
+      text-align:center;
+      z-index:20;
     }
-    .sidebar img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    .sidebar h2 {
-      margin: 0.5rem 0;
-      color: var(--title);
-      font-size: 1.4rem;
-    }
-    .sidebar h3 {
-      margin: 0.2rem 0 1rem;
-      font-weight: 500;
-      font-size: 0.98rem;
-      color:#533f35;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.25rem 0;
-    }
-    .sidebar li {
-      font-size: 0.95rem;
-      margin: 0.35rem 0;
-    }
-    .sidebar .coords{font-size:.95rem; line-height:1.5; opacity:.9}
-    .cta {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.9rem 1.4rem;
-      border-radius: 999px;
-      cursor: pointer;
-      margin-top: 1rem;
-      transition: transform .08s ease, background-color .2s ease;
-    }
-    .cta:hover{ background-color: var(--accent-dark); transform: translateY(-1px); }
-    .cta:active{ transform: translateY(0); }
-    /* Contenu principal */
-    main {
-      margin-left: 28%;
-      width: 72%;
-      padding: 3rem 4rem;
-    }
-    section { margin-bottom: 5rem; }
-    .hero {
-      position: relative;
-      background: url('assets/hero-placeholder.jpg') center/cover no-repeat;
-      padding: 8rem 2rem;
-      border-radius: var(--radius);
-      color: white;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-      text-align: center;
-      overflow: hidden;
+    .sidebar img.portrait{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:1rem;}
+    .sidebar h2{margin:.25rem 0;color:var(--title);font-size:1.35rem;}
+    .sidebar h3{margin:0 0 1rem;font-weight:500;font-size:.98rem;color:#533f35;}
+    .sidebar ul{list-style:none;margin:0 0 1rem 0;padding:0; line-height:1.6;}
+    .sidebar .cta{background:var(--accent);color:#fff;border:none;padding:.85rem 1.2rem;border-radius:999px;cursor:pointer}
+    .coords{opacity:.9; font-size:.95rem; margin-bottom:.75rem;}
+
+    /* Main */
+    main{margin-left:28%; width:72%;}
+    .topnav{position:sticky; top:0; z-index:30; backdrop-filter:saturate(1.1) blur(6px); background:rgba(255,255,255,.7); border-bottom:1px solid rgba(0,0,0,.06);}
+    .topnav .wrap{display:flex; align-items:center; gap:1rem; padding:.75rem 1.25rem;}
+    .topnav img.logo{height:36px; width:auto;}
+    .topnav nav{margin-left:auto; display:flex; gap:1.25rem; font-weight:500;}
+    .topnav a:hover{color:var(--title);}
+
+    .container{padding:2rem 4rem;}
+    section{margin: 3rem 0 5rem;}
+
+    /* Hero */
+    .hero{
+      position:relative; border-radius:var(--radius); overflow:hidden; min-height:340px;
+      background:url('assets/hero-visual.jpg') center/cover no-repeat;
+      color:#fff; text-align:left;
     }
     .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.35));
-      pointer-events:none;
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.3) 45%, rgba(0,0,0,.12) 80%);
     }
-    .hero > *{ position:relative; z-index:1; }
-    h1{ font-size: clamp(1.6rem, 3vw, 2.4rem); margin:0 0 .5rem 0;}
-    .hero p{ font-size: clamp(1rem, 2vw, 1.2rem); margin:0 0 1.25rem 0;}
-    .grid { display:grid; gap:1.25rem; }
-    .approches, .avis {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-    }
-    .card {
-      background: var(--bg-soft);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      border:1px solid rgba(0,0,0,.06);
-    }
-    .a-propos .grid{ grid-template-columns: 1fr 1.2fr; align-items:center; }
-    .a-propos .illustr{
-      background: var(--bg-soft);
-      border-radius: var(--radius);
-      min-height: 240px;
-      background-image:url('assets/portrait-valerie.jpg');
-      background-size: cover;
-      background-position: center;
-      border:1px solid rgba(0,0,0,.06);
-    }
-    h2{font-size: clamp(1.25rem, 2.2vw, 1.6rem); color:#1e1e1e; margin:0 0 .75rem 0;}
-    .muted{ color:#555; }
-    .section-soft{ background: var(--bg-soft); padding:2rem; border-radius: var(--radius); border:1px solid rgba(0,0,0,.06); }
-    footer {
-      background: var(--bg-soft);
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.95rem;
-      border-radius: var(--radius);
-    }
-    /* Responsive: sidebar collapses to header */
-    @media (max-width: 980px) {
-      .sidebar {
-        position: sticky;
-        top: 0;
-        height: auto;
-        width: 100%;
-        padding: 0.75rem 1rem;
-        flex-direction: row;
-        gap: 1rem;
-        justify-content: flex-start;
-        border-right:none;
-        border-bottom:1px solid rgba(0,0,0,.06);
-      }
-      .sidebar img { width: 56px; height: 56px; margin: 0; }
-      .sidebar h2{ font-size:1rem; margin:.1rem 0 0 0;}
-      .sidebar h3{ display:none; }
-      .sidebar ul{ display:none; }
-      .sidebar .coords{ display:none; }
-      .sidebar .cta{ margin-left:auto; padding:.65rem 1rem; }
-      main { margin-left: 0; width: 100%; padding: 1.25rem; }
-      .hero { padding: 4rem 1.25rem; border-radius: 12px; }
-      section { margin-bottom: 3rem; }
-      .a-propos .grid{ grid-template-columns: 1fr; }
+    .hero .inner{position:relative; z-index:1; padding:3.5rem 3rem; max-width:720px;}
+    .hero h1{font-size:clamp(1.6rem,3vw,2.4rem); margin:0 0 .5rem; line-height:1.2;}
+    .hero p{font-size:1.05rem; margin:0 0 1.25rem;}
+    .cta{background:var(--accent); color:#fff; border:none; padding:.9rem 1.2rem; border-radius:999px; cursor:pointer;}
+
+    /* Qui suis-je */
+    h2.section-title{font-size:clamp(1.25rem,2.2vw,1.6rem); margin:0 0 .75rem; color:#1e1e1e;}
+    .muted{color:var(--muted);}
+    .quote{margin-top:1rem; padding-left:1rem; border-left:4px solid #F3EAA2; color:#A38B00; font-style:italic;}
+
+    /* Approaches 2x2 */
+    .approches-grid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem;}
+    .card{background:var(--bg-soft); border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:1.25rem;}
+    .card .row{display:flex; align-items:flex-start; gap:.75rem;}
+    .card svg{color:#E9D86C; flex:0 0 auto;}
+    .card h3{margin:.25rem 0 .35rem; font-size:1.05rem;}
+    .card p{margin:0; font-size:.95rem; color:var(--muted);}
+
+    /* Enfants section */
+    .kids{display:grid; grid-template-columns: 1.1fr 1fr; gap:2rem; background:var(--bg-soft); border-radius:var(--radius); border:1px solid rgba(0,0,0,.06); padding:2rem;}
+    .kids .img{border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,.06);}
+    .kids .img img{width:100%; height:auto; display:block;}
+
+    /* Avis */
+    .avis{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;}
+    .avis .card img{width:100%; height:auto; display:block; border-radius:8px;}
+
+    footer{background:var(--bg-soft); padding:2rem; border-top:1px solid rgba(0,0,0,.06); text-align:center; margin-top:4rem;}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .sidebar{position:sticky; top:0; height:auto; width:100%; padding:.75rem 1rem; flex-direction:row; justify-content:flex-start; text-align:left;}
+      .sidebar img.portrait{width:56px; height:56px; margin:0 .75rem 0 0;}
+      .sidebar h3, .sidebar ul, .coords{display:none;}
+      main{margin-left:0; width:100%;}
+      .container{padding:1.25rem;}
+      .kids{grid-template-columns: 1fr; gap:1rem;}
+      .topnav nav{display:none;}
     }
   </style>
 </head>
 <body>
+  <!-- Sidebar sticky -->
   <aside class="sidebar">
-    <img src="assets/portrait-valerie.jpg" alt="Portrait de Valérie Budynek">
-    <div class="stack">
+    <img class="portrait" src="assets/portrait-valerie.jpg" alt="Portrait de Valérie Budynek">
+    <div>
       <h2>Valérie Budynek</h2>
       <h3>Psychopraticienne – Thérapie systémique</h3>
       <ul>
@@ -180,56 +124,92 @@
   </aside>
 
   <main>
-    <section class="hero">
-      <h1>Thérapeute à Fenouillet (Toulouse nord)</h1>
-      <p>Accompagnement bienveillant pour enfants, adolescents et adultes</p>
-      <button class="cta">Découvrir mes approches</button>
-    </section>
+    <!-- Top nav with logo + menu -->
+    <div class="topnav">
+      <div class="wrap">
+        <img src="assets/logo-vb.png" alt="Logo VB" class="logo">
+        <nav>
+          <a href="#">Accueil</a>
+          <a href="#approches">Mes approches thérapeutiques</a>
+          <a href="#quisuisje">Qui suis-je</a>
+          <a href="#infos">Infos pratiques</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
 
-    <section class="a-propos">
-      <h2>À propos</h2>
-      <div class="grid">
-        <div class="illustr" aria-hidden="true"></div>
-        <div>
-          <p class="muted">[Texte court de présentation et parcours : 25 ans auprès des familles, transition vers la thérapie, approche bienveillante et intégrative.]</p>
-          <button class="cta">En savoir plus</button>
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero" id="hero" aria-label="Introduction">
+        <div class="inner">
+          <h1>Psychopraticienne à Fenouillet (Toulouse Nord)</h1>
+          <p>Accompagnement bienveillant pour enfants, adolescents et adultes.</p>
+          <button class="cta">Découvrir mes approches</button>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <h2>Mes approches thérapeutiques</h2>
-      <div class="approches">
-        <div class="card">Hypnose</div>
-        <div class="card">EMDR / DSA</div>
-        <div class="card">Thérapie systémique</div>
-        <div class="card">IFS / Génogramme</div>
-      </div>
-    </section>
+      <!-- Qui suis-je -->
+      <section id="quisuisje">
+        <h2 class="section-title">Qui suis-je&nbsp;? Mon parcours.</h2>
+        <p class="muted">
+        Forte d'une expérience de plus de 15 ans dans l'accompagnement thérapeutique, j'ai développé une approche intégrative qui combine plusieurs méthodes éprouvées. Mon parcours m'a amenée à me spécialiser dans les thérapies brèves et l'approche systémique, toujours avec l'objectif de vous fournir des outils concrets pour une transformation durable. J'accompagne mes patients avec écoute, respect et non-jugement, afin de les aider à retrouver leur équilibre et à révéler leur plein potentiel. Chaque thérapie est unique et adaptée aux besoins spécifiques de chacun.
+        </p>
+        <p class="quote">"Mon rôle est de vous aider à comprendre et transformer ce qui se répète." — Valérie Budynek</p>
+      </section>
 
-    <section class="section-soft">
-      <h2>Enfants & Adolescents</h2>
-      <p class="muted">[Bloc dédié aux accompagnements jeunes publics : traumatismes, émotions, confiance, post-Covid.]</p>
-    </section>
+      <!-- Approches 2x2 -->
+      <section id="approches">
+        <h2 class="section-title">Mes approches thérapeutiques</h2>
+        <div class="approches-grid">
+          <div class="card">
+            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><circle cx='12' cy='12' r='10' fill='none' stroke='currentColor' stroke-width='1.5'/><path d='M6 12h12M12 6v12' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/></svg><div><h3>Hypnose / IFS</h3><p>Accéder à vos ressources intérieures et apaiser les blessures émotionnelles pour un changement durable.</p></div></div>
+          </div>
+          <div class="card">
+            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><path d='M12 4s5 3 5 8-5 8-5 8-5-3-5-8 5-8 5-8z' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='12' cy='12' r='2.5' fill='currentColor'/></svg><div><h3>EMDR-DSA</h3><p>Libérer les traumatismes et retraiter les souvenirs douloureux grâce à une approche neuro-scientifique.</p></div></div>
+          </div>
+          <div class="card">
+            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><circle cx='6' cy='12' r='2.5' fill='currentColor'/><circle cx='18' cy='7' r='2.5' fill='currentColor'/><circle cx='18' cy='17' r='2.5' fill='currentColor'/><path d='M8.5 11.5 15.5 7.5M8.5 12.5 15.5 16.5' stroke='currentColor' stroke-width='1.5'/></svg><div><h3>Thérapie systémique</h3><p>Comprendre les dynamiques relationnelles et restaurer l'équilibre au sein des familles.</p></div></div>
+          </div>
+          <div class="card">
+            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><path d='M12 3l3 6 6 .9-4.5 4.1 1.1 6L12 17l-5.6 3.9 1.1-6L3 9.9 9 9z' fill='none' stroke='currentColor' stroke-width='1.5'/></svg><div><h3>IFS / Génogramme</h3><p>Explorer les parts intérieures et l'héritage familial pour une compréhension profonde.</p></div></div>
+          </div>
+        </div>
+      </section>
 
-    <section>
-      <h2>Avis et témoignages</h2>
-      <div class="avis">
-        <div class="card">“Très à l’écoute et bienveillante...” — C. M.</div>
-        <div class="card">“Une vraie transformation personnelle...” — L. D.</div>
-        <div class="card">“Je recommande vivement !” — A. B.</div>
-      </div>
-    </section>
+      <!-- Enfants & Adolescents -->
+      <section class="kids" id="infos">
+        <div>
+          <h2 class="section-title">Accompagnement spécifique pour enfants et adolescents</h2>
+          <p class="muted">Les jeunes sont particulièrement sensibles aux défis de la vie. J’accompagne enfants et adolescents avec une approche ludique et bienveillante pour surmonter difficultés scolaires, émotionnelles et relationnelles.</p>
+        </div>
+        <div class="img">
+          <img src="assets/children.jpg" alt="Accompagnement des enfants et adolescents">
+        </div>
+      </section>
 
-    <section class="section-soft">
-      <h2>Prendre rendez-vous</h2>
-      <p class="muted">Chaque histoire mérite d’être écoutée.</p>
-      <button class="cta">Réserver une consultation</button>
-    </section>
+      <!-- Avis -->
+      <section id="avis">
+        <h2 class="section-title">Ils m'ont fait confiance</h2>
+        <div class="avis">
+          <div class="card"><img src="assets/avis-1.png" alt="Avis Google Céline" /></div>
+          <div class="card"><img src="assets/avis-2.png" alt="Avis Google Sandra" /></div>
+          <div class="card"><img src="assets/avis-3.png" alt="Avis Google Veronica" /></div>
+        </div>
+      </section>
 
-    <footer>
-      © 2025 Valérie Budynek – Thérapeute à Fenouillet | <a href="#" rel="nofollow">Mentions légales</a>
-    </footer>
+      <!-- Contact / CTA -->
+      <section id="contact">
+        <div class="card" style="text-align:center;">
+          <h2 class="section-title">Prendre rendez-vous</h2>
+          <p class="muted">Chaque histoire mérite d’être écoutée.</p>
+          <button class="cta">Réserver une consultation</button>
+        </div>
+      </section>
+
+      <footer>
+        © 2025 Valérie Budynek — Psychopraticienne à Fenouillet (Toulouse Nord)
+      </footer>
+    </div>
   </main>
 </body>
 </html>
