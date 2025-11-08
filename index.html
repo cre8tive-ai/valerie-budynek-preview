@@ -250,6 +250,14 @@
   .mobile-profile .portrait{ width:40px; height:40px; }
   .mobile-cta a{ padding:.75rem 0; font-weight:600; }
 }
+/* Desktop (≥ 981px) : on masque les éléments mobiles */
+@media (min-width: 981px){
+  .mobile-profile,
+  .mobile-profile-drawer,
+  .mobile-cta{
+    display: none !important;
+  }
+}
 
     }
   </style>
