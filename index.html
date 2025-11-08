@@ -7,42 +7,34 @@
   <title>Valérie Budynek — Psychopraticienne à Fenouillet (Toulouse Nord)</title>
   <style>
     :root{
-      --bg-soft:#F9F7F4;
       --bg:#FFFFFF;
-      --ink:#333333;
+      --bg-soft:#F9F7F4;
+      --ink:#333;
       --muted:#555;
-      --accent:#B58E73;
-      --accent-2:#caa98f;
       --title:#7A5C4F;
+      --accent:#B58E73;
+      --accent-2:#e9d86c;
       --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      display:flex;
-      background:var(--bg);
-    }
+    body{margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); display:flex; background:var(--bg);}
     a{color:inherit; text-decoration:none;}
     /* Sidebar sticky */
     .sidebar{
-      width:28%;
-      background:var(--bg-soft);
+      width:28%; background:var(--bg-soft);
       position:fixed; inset-block:0;
-      padding:2rem 1.5rem;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      border-right:1px solid rgba(0,0,0,.06);
-      text-align:center;
-      z-index:20;
+      padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+      border-right:1px solid rgba(0,0,0,.06); z-index:20;
     }
     .sidebar img.portrait{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:1rem;}
-    .sidebar h2{margin:.25rem 0;color:var(--title);font-size:1.35rem;}
+    .sidebar h2{margin:.3rem 0;color:var(--title);font-size:1.35rem;}
     .sidebar h3{margin:0 0 1rem;font-weight:500;font-size:.98rem;color:#533f35;}
     .sidebar ul{list-style:none;margin:0 0 1rem 0;padding:0; line-height:1.6;}
-    .sidebar .cta{background:var(--accent);color:#fff;border:none;padding:.85rem 1.2rem;border-radius:999px;cursor:pointer}
     .coords{opacity:.9; font-size:.95rem; margin-bottom:.75rem;}
+    .btn{background:var(--accent); color:#fff; border:none; padding:.85rem 1.2rem; border-radius:999px; cursor:pointer; transition:transform .06s ease;}
+    .btn:hover{transform:translateY(-1px)}
 
     /* Main */
     main{margin-left:28%; width:72%;}
@@ -53,44 +45,54 @@
     .topnav a:hover{color:var(--title);}
 
     .container{padding:2rem 4rem;}
-    section{margin: 3rem 0 5rem;}
+    section{margin:3rem 0 5rem;}
 
     /* Hero */
-    .hero{
-      position:relative; border-radius:var(--radius); overflow:hidden; min-height:340px;
-      background:url('assets/hero-visual.jpg') center/cover no-repeat;
-      color:#fff; text-align:left;
-    }
-    .hero::after{
-      content:''; position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.3) 45%, rgba(0,0,0,.12) 80%);
-    }
-    .hero .inner{position:relative; z-index:1; padding:3.5rem 3rem; max-width:720px;}
-    .hero h1{font-size:clamp(1.6rem,3vw,2.4rem); margin:0 0 .5rem; line-height:1.2;}
+    .hero{position:relative; border-radius:var(--radius); overflow:hidden; min-height:360px; background:url('assets/hero-visual.jpg') center/cover no-repeat; color:#fff;}
+    .hero::after{content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.28) 45%, rgba(0,0,0,.12) 80%);}
+    .hero .inner{position:relative; z-index:1; padding:3.5rem 3rem; max-width:780px;}
+    .hero h1{font-size:clamp(1.6rem,3vw,2.5rem); margin:0 0 .6rem; line-height:1.2;}
     .hero p{font-size:1.05rem; margin:0 0 1.25rem;}
-    .cta{background:var(--accent); color:#fff; border:none; padding:.9rem 1.2rem; border-radius:999px; cursor:pointer;}
 
-    /* Qui suis-je */
+    /* Qui suis-je (image 30% left) */
+    .qsj{display:grid; grid-template-columns: 0.3fr 0.7fr; gap:1.5rem; align-items:center;}
+    .qsj .photo{border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,.06); box-shadow:var(--shadow);}
+    .qsj .photo img{width:100%; height:auto; display:block;}
     h2.section-title{font-size:clamp(1.25rem,2.2vw,1.6rem); margin:0 0 .75rem; color:#1e1e1e;}
     .muted{color:var(--muted);}
     .quote{margin-top:1rem; padding-left:1rem; border-left:4px solid #F3EAA2; color:#A38B00; font-style:italic;}
 
-    /* Approaches 2x2 */
-    .approches-grid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1rem;}
-    .card{background:var(--bg-soft); border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:1.25rem;}
+    /* Approches 2x2 + hover */
+    .approches-grid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1.1rem;}
+    .card{background:var(--bg-soft); border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:1.25rem; transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;}
     .card .row{display:flex; align-items:flex-start; gap:.75rem;}
-    .card svg{color:#E9D86C; flex:0 0 auto;}
-    .card h3{margin:.25rem 0 .35rem; font-size:1.05rem;}
+    .card svg{color:var(--accent-2); flex:0 0 auto;}
+    .card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:rgba(181,142,115,.45);}
+    .card h3{margin:.25rem 0 .35rem; font-size:1.06rem;}
     .card p{margin:0; font-size:.95rem; color:var(--muted);}
 
-    /* Enfants section */
+    /* Section pour qui/pour quoi */
+    .who{background:var(--bg-soft); border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); padding:2rem;}
+    .who .cols{display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; margin-top:1rem;}
+    .tile{background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; overflow:hidden; display:grid; grid-template-columns: 0.45fr 0.55fr;}
+    .tile .img{position:relative;}
+    .tile .img img{width:100%; height:100%; object-fit:cover; display:block;}
+    .tile .content{padding:1rem 1.25rem;}
+    .tile h3{margin:.1rem 0 .35rem;}
+    .tile ul{margin:0; padding-left:1.1rem; color:var(--muted); line-height:1.5;}
+
+    /* Kids section */
     .kids{display:grid; grid-template-columns: 1.1fr 1fr; gap:2rem; background:var(--bg-soft); border-radius:var(--radius); border:1px solid rgba(0,0,0,.06); padding:2rem;}
-    .kids .img{border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,.06);}
-    .kids .img img{width:100%; height:auto; display:block;}
 
     /* Avis */
     .avis{display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;}
     .avis .card img{width:100%; height:auto; display:block; border-radius:8px;}
+
+    /* Contact */
+    .contact .row{display:grid; grid-template-columns: 1.2fr 0.8fr; gap:1.25rem;}
+    .cal{background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:1rem;}
+    .wa{background:var(--bg-soft); border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; gap:.75rem; justify-content:center;}
+    .wa .btn-wa{background:#25D366; color:#fff; padding:.9rem 1.1rem; border-radius:999px; text-align:center; font-weight:600;}
 
     footer{background:var(--bg-soft); padding:2rem; border-top:1px solid rgba(0,0,0,.06); text-align:center; margin-top:4rem;}
 
@@ -102,6 +104,9 @@
       main{margin-left:0; width:100%;}
       .container{padding:1.25rem;}
       .kids{grid-template-columns: 1fr; gap:1rem;}
+      .qsj{grid-template-columns: 1fr; }
+      .who .cols{grid-template-columns: 1fr;}
+      .contact .row{grid-template-columns: 1fr;}
       .topnav nav{display:none;}
     }
   </style>
@@ -120,7 +125,7 @@
       </ul>
       <p class="coords">📍 7 rue de la Pradine, 31150 Fenouillet<br>📞 06 58 16 50 07</p>
     </div>
-    <button class="cta">Prendre rendez-vous</button>
+    <button class="btn">Prendre rendez-vous</button>
   </aside>
 
   <main>
@@ -132,7 +137,7 @@
           <a href="#">Accueil</a>
           <a href="#approches">Mes approches thérapeutiques</a>
           <a href="#quisuisje">Qui suis-je</a>
-          <a href="#infos">Infos pratiques</a>
+          <a href="#pourqui">Pour qui & pour quoi</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -144,40 +149,79 @@
         <div class="inner">
           <h1>Psychopraticienne à Fenouillet (Toulouse Nord)</h1>
           <p>Accompagnement bienveillant pour enfants, adolescents et adultes.</p>
-          <button class="cta">Découvrir mes approches</button>
+          <button class="btn">Découvrir mes approches</button>
         </div>
       </section>
 
-      <!-- Qui suis-je -->
-      <section id="quisuisje">
-        <h2 class="section-title">Qui suis-je&nbsp;? Mon parcours.</h2>
-        <p class="muted">
-        Forte d'une expérience de plus de 15 ans dans l'accompagnement thérapeutique, j'ai développé une approche intégrative qui combine plusieurs méthodes éprouvées. Mon parcours m'a amenée à me spécialiser dans les thérapies brèves et l'approche systémique, toujours avec l'objectif de vous fournir des outils concrets pour une transformation durable. J'accompagne mes patients avec écoute, respect et non-jugement, afin de les aider à retrouver leur équilibre et à révéler leur plein potentiel. Chaque thérapie est unique et adaptée aux besoins spécifiques de chacun.
-        </p>
-        <p class="quote">"Mon rôle est de vous aider à comprendre et transformer ce qui se répète." — Valérie Budynek</p>
+      <!-- Qui suis-je with photo left 30% -->
+      <section id="quisuisje" class="qsj">
+        <div class="photo"><img src="assets/portrait-valerie.jpg" alt="Valérie Budynek — portrait"></div>
+        <div>
+          <h2 class="section-title">Qui suis-je&nbsp;? Mon parcours.</h2>
+          <p class="muted">
+          Forte d'une expérience de plus de 15 ans dans l'accompagnement thérapeutique, j'ai développé une approche intégrative qui combine plusieurs méthodes éprouvées. Mon parcours m'a amenée à me spécialiser dans les thérapies brèves et l'approche systémique, toujours avec l'objectif de vous fournir des outils concrets pour une transformation durable. J'accompagne mes patients avec écoute, respect et non-jugement, afin de les aider à retrouver leur équilibre et à révéler leur plein potentiel. Chaque thérapie est unique et adaptée aux besoins spécifiques de chacun.
+          </p>
+          <p class="quote">"Mon rôle est de vous aider à comprendre et transformer ce qui se répète." — Valérie Budynek</p>
+        </div>
       </section>
 
-      <!-- Approches 2x2 -->
+      <!-- Approches 2x2 with hover -->
       <section id="approches">
         <h2 class="section-title">Mes approches thérapeutiques</h2>
         <div class="approches-grid">
-          <div class="card">
-            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><circle cx='12' cy='12' r='10' fill='none' stroke='currentColor' stroke-width='1.5'/><path d='M6 12h12M12 6v12' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/></svg><div><h3>Hypnose / IFS</h3><p>Accéder à vos ressources intérieures et apaiser les blessures émotionnelles pour un changement durable.</p></div></div>
+          <div class="card"><div class="row">
+            <svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><circle cx='12' cy='12' r='10' fill='none' stroke='currentColor' stroke-width='1.5'/><path d='M6 12h12M12 6v12' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/></svg>
+            <div><h3>Hypnose / IFS</h3><p>Accéder à vos ressources intérieures et apaiser les blessures émotionnelles pour un changement durable.</p></div>
+          </div></div>
+          <div class="card"><div class="row">
+            <svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><path d='M12 4s5 3 5 8-5 8-5 8-5-3-5-8 5-8 5-8z' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='12' cy='12' r='2.5' fill='currentColor'/></svg>
+            <div><h3>EMDR-DSA</h3><p>Libérer les traumatismes et retraiter les souvenirs douloureux grâce à une approche neuro-scientifique.</p></div>
+          </div></div>
+          <div class="card"><div class="row">
+            <svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><circle cx='6' cy='12' r='2.5' fill='currentColor'/><circle cx='18' cy='7' r='2.5' fill='currentColor'/><circle cx='18' cy='17' r='2.5' fill='currentColor'/><path d='M8.5 11.5 15.5 7.5M8.5 12.5 15.5 16.5' stroke='currentColor' stroke-width='1.5'/></svg>
+            <div><h3>Thérapie systémique</h3><p>Comprendre les dynamiques relationnelles et restaurer l'équilibre au sein des familles.</p></div>
+          </div></div>
+          <div class="card"><div class="row">
+            <svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><path d='M12 3l3 6 6 .9-4.5 4.1 1.1 6L12 17l-5.6 3.9 1.1-6L3 9.9 9 9z' fill='none' stroke='currentColor' stroke-width='1.5'/></svg>
+            <div><h3>IFS / Génogramme</h3><p>Explorer les parts intérieures et l'héritage familial pour une compréhension profonde.</p></div>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- New section: Pour qui & pour quoi -->
+      <section id="pourqui" class="who">
+        <h2 class="section-title">La psychothérapie&nbsp;: pour qui et pour quoi&nbsp;?</h2>
+        <p class="muted">La psychothérapie s’adresse aux adultes comme aux enfants pour traverser une période difficile, dépasser des blocages, mieux comprendre ses émotions et retrouver un équilibre durable. Elle offre un espace d’écoute, de clarté et d’outils concrets pour avancer.</p>
+        <div class="cols">
+          <div class="tile">
+            <div class="img"><img src="assets/adult.jpg" alt="Psychothérapie pour les adultes"></div>
+            <div class="content">
+              <h3>Psychothérapie pour les adultes</h3>
+              <ul>
+                <li>Stress, anxiété, dépression légère</li>
+                <li>Traumatismes, deuils, séparations</li>
+                <li>Phobies, addictions, troubles alimentaires</li>
+                <li>Manque de confiance, estime de soi</li>
+              </ul>
+            </div>
           </div>
-          <div class="card">
-            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><path d='M12 4s5 3 5 8-5 8-5 8-5-3-5-8 5-8 5-8z' fill='none' stroke='currentColor' stroke-width='1.5'/><circle cx='12' cy='12' r='2.5' fill='currentColor'/></svg><div><h3>EMDR-DSA</h3><p>Libérer les traumatismes et retraiter les souvenirs douloureux grâce à une approche neuro-scientifique.</p></div></div>
-          </div>
-          <div class="card">
-            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><circle cx='6' cy='12' r='2.5' fill='currentColor'/><circle cx='18' cy='7' r='2.5' fill='currentColor'/><circle cx='18' cy='17' r='2.5' fill='currentColor'/><path d='M8.5 11.5 15.5 7.5M8.5 12.5 15.5 16.5' stroke='currentColor' stroke-width='1.5'/></svg><div><h3>Thérapie systémique</h3><p>Comprendre les dynamiques relationnelles et restaurer l'équilibre au sein des familles.</p></div></div>
-          </div>
-          <div class="card">
-            <div class="row"><svg viewBox='0 0 24 24' width='28' height='28' aria-hidden='true'><path d='M12 3l3 6 6 .9-4.5 4.1 1.1 6L12 17l-5.6 3.9 1.1-6L3 9.9 9 9z' fill='none' stroke='currentColor' stroke-width='1.5'/></svg><div><h3>IFS / Génogramme</h3><p>Explorer les parts intérieures et l'héritage familial pour une compréhension profonde.</p></div></div>
+          <div class="tile">
+            <div class="img"><img src="assets/children.jpg" alt="Psychothérapie pour l’enfant"></div>
+            <div class="content">
+              <h3>Psychothérapie pour l’enfant</h3>
+              <ul>
+                <li>Gestion des émotions, peurs, harcèlement</li>
+                <li>Troubles du sommeil, cauchemars</li>
+                <li>Difficultés scolaires, phobies</li>
+                <li>Troubles du comportement</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Enfants & Adolescents -->
-      <section class="kids" id="infos">
+      <!-- Kids (bloc dédié) -->
+      <section class="kids" aria-label="Enfants et adolescents — accompagnement">
         <div>
           <h2 class="section-title">Accompagnement spécifique pour enfants et adolescents</h2>
           <p class="muted">Les jeunes sont particulièrement sensibles aux défis de la vie. J’accompagne enfants et adolescents avec une approche ludique et bienveillante pour surmonter difficultés scolaires, émotionnelles et relationnelles.</p>
@@ -197,18 +241,23 @@
         </div>
       </section>
 
-      <!-- Contact / CTA -->
-      <section id="contact">
-        <div class="card" style="text-align:center;">
-          <h2 class="section-title">Prendre rendez-vous</h2>
-          <p class="muted">Chaque histoire mérite d’être écoutée.</p>
-          <button class="cta">Réserver une consultation</button>
+      <!-- Contact / Calendly + WhatsApp -->
+      <section id="contact" class="contact">
+        <h2 class="section-title">Prendre rendez-vous</h2>
+        <div class="row">
+          <div class="cal">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/votre-lien-ici/demo-20min" style="min-width:320px;height:630px;"></div>
+            <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          </div>
+          <div class="wa">
+            <p class="muted">Besoin d'une réponse rapide&nbsp;? Contact direct WhatsApp.</p>
+            <a class="wa btn-wa" href="https://wa.me/33600000000" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+            <small class="muted">Lundi–Vendredi, 9h–18h</small>
+          </div>
         </div>
       </section>
 
-      <footer>
-        © 2025 Valérie Budynek — Psychopraticienne à Fenouillet (Toulouse Nord)
-      </footer>
+      <footer>© 2025 Valérie Budynek — Psychopraticienne à Fenouillet (Toulouse Nord)</footer>
     </div>
   </main>
 </body>
